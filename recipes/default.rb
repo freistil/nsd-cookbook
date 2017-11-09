@@ -1,0 +1,3 @@
+id = 'nsd'
+
+package 'nsd'
