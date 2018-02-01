@@ -1,3 +1,0 @@
-id = 'nsd'
-
-package 'nsd'
