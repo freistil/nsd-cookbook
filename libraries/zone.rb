@@ -4,10 +4,11 @@ module NsdCookbook
 
     def add_record(dns_record)
       zone = dns_record[:zone]
+      resource_record = ZoneResourceRecord.new(dns_record)
       if @@zone_data.key?(zone)
-        @@zone_data[zone] << dns_record
+        @@zone_data[zone] << resource_record
       else
-        @@zone_data[zone] = [dns_record]
+        @@zone_data[zone] = [resource_record]
       end
     end
 

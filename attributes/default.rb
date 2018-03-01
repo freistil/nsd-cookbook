@@ -1,8 +1,8 @@
 id = 'nsd'
 
-default[id]['master']['fqdn'] = nil
-default[id]['master']['ip_address'] = nil
-default[id]['master']['contact'] = nil
+default[id]['master']['fqdn'] = node['fqdn']
+default[id]['master']['ip_address'] = node['ipaddress']
+default[id]['master']['contact'] = "hostmaster@example.com"
 default[id]['slaves'] = {}  # slave NS FQDN -> slave NS IP address
 default[id]['zones'] = []
 
