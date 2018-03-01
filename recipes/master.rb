@@ -31,26 +31,26 @@ end
 service_conf_file = ::File.join(node[id]['service']['conf_dir'], 'nsd.conf')
 service_user = node[id]['service']['user']
 
-node[id]['zones'].each do |fqdn|
-  zone_file = "#{::File.join(zone_dir, fqdn)}.zone"
-
-  template zone_file do
-    source 'nsd.zone.erb'
-    owner 'root'
-    group node['root_user']
-    variables(
-      fqdn: fqdn,
-      master_fqdn: node[id]['master']['fqdn'],
-      master_ip_address: node[id]['master']['ip_address'],
-      master_contact: node[id]['master']['contact'],
-      slaves: node[id]['slaves'],
-      serial: ::DateTime.now.strftime('%Y%m%d01'),
-      ttl: 600
-    )
-    mode 0644
-    action :create_if_missing
-  end
-end
+# zones.each do |fqdn|
+#   zone_file = "#{::File.join(zone_dir, fqdn)}.zone"
+#
+#   template zone_file do
+#     source 'nsd.zone.erb'
+#     owner 'root'
+#     group node['root_user']
+#     variables(
+#       fqdn: fqdn,
+#       master_fqdn: node[id]['master']['fqdn'],
+#       master_ip_address: node[id]['master']['ip_address'],
+#       master_contact: node[id]['master']['contact'],
+#       slaves: node[id]['slaves'],
+#       serial: ::DateTime.now.strftime('%Y%m%d01'),
+#       ttl: 600
+#     )
+#     mode 0644
+#     action :create_if_missing
+#   end
+# end
 
 template service_conf_file do
   source 'nsd.master.conf.erb'
