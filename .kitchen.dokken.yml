@@ -32,4 +32,4 @@ suites:
       nsd:
         master:
           fqdn: ns1.example.com
-          contact: "hostmaster@example.com"
+          contact: "info@example.com"

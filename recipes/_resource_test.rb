@@ -35,4 +35,6 @@ nsd_record "blog.notanexample.com" do
   ip_address "3.4.5.6"
 end
 
-nsd_zone "example.com"
+nsd_zone "example.com" do
+  contact "info@example.com"
+end

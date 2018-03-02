@@ -4,6 +4,7 @@
 # end
 #
 property :name, String, name_property: true
+property :contact, String, default: "hostmaster@example.com"
 
 zone_dir = ::File.join(node['nsd']['service']['conf_dir'], 'zones')
 
@@ -20,7 +21,7 @@ action :create do
       zone: new_resource.name,
       master_fqdn: node['nsd']['master']['fqdn'],
       master_ip_address: node['nsd']['master']['ip_address'],
-      master_contact: node['nsd']['master']['contact'],
+      contact: new_resource.contact.gsub('@', '.'),
       slaves: node['nsd']['slaves'],
       serial: ::DateTime.now.strftime('%Y%m%d01'),
       records: zone_records(new_resource.name),

@@ -6,11 +6,11 @@ class ZoneResourceRecord
   def bind9entry
     case type
     when "A"
-      "#{name} IN A #{ip_address}"
+      "%-20s IN A     %s".% [name, ip_address]
     when "MX"
-      "       IN MX #{preference} #{name}"
+      "%-20s IN MX    %s %s".% ['', preference, name]
     when "CNAME"
-      "#{name} IN CNAME #{real_name}"
+      "%-20s IN CNAME %s".% [name, real_name]
     end
   end
 
